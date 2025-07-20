@@ -8,7 +8,7 @@
 */
 
 --  Исследовательский анализ данных
--- Задача 1. Исследование доли платящих игроков
+-- 1 Исследование доли платящих игроков
 
 -- 1.1. Доля платящих пользователей по всем данным:
 SELECT
@@ -26,7 +26,7 @@ FROM fantasy.users AS u
 LEFT JOIN fantasy.race AS r ON u.race_id=r.race_id
 GROUP BY r.race; 
 
--- Задача 2. Исследование внутриигровых покупок
+-- 2 Исследование внутриигровых покупок
 -- 2.1. Статистические показатели по полю amount:
 SELECT
     COUNT(*) AS total_purchases,
@@ -85,7 +85,7 @@ FROM epic_items AS e
 WHERE e.total_purchases > 0
 ORDER BY e.total_players DESC;
 
--- Часть 2. Решение ad hoc-задач
+-- .Решение ad hoc-задач
 --  Зависимость активности игроков от расы персонажа:
 WITH players AS (
 SELECT r.race , r.race_id,
