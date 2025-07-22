@@ -15,7 +15,9 @@ constraint_name
 from  information_schema.columns 
 LEFT JOIN information_schema.key_column_usage AS k USING(table_schema, table_name, column_name)
 where table_schema='fantasy' and table_name='users'
---Таблица users содержит 11 полей, и большинство из них хранят текстовые данные. При этом поле id с идентификатором игрока — это первичный ключ таблицы, а четыре поля class_id, ch_id, race_id и loc_id — внешние ключи. Можно предположить, что таблица users связана с таблицами classes, skills, race и country.
+--Таблица users содержит 11 полей, и большинство из них хранят текстовые данные. 
+   При этом поле id с идентификатором игрока — это первичный ключ таблицы, а четыре поля class_id, ch_id, race_id и loc_id — внешние ключи. 
+   Можно предположить, что таблица users связана с таблицами classes, skills, race и country.
 
 --3.Вывод первых строк таблицы users
 Select *,
@@ -54,7 +56,8 @@ LEFT JOIN information_schema.key_column_usage AS k
 -- Фильтруем результат по названию схемы и таблицы
 WHERE table_schema='fantasy'and table_name='events'
 ORDER BY c.table_name;
---Таблица events содержит семь полей, и большинство из них хранит текстовые данные. При этом поле transaction_id с идентификатором транзакции — это первичный ключ таблицы, а два поля id и item_code — внешние ключи, связывающие данные с таблицами users и items.
+--Таблица events содержит семь полей, и большинство из них хранит текстовые данные. 
+При этом поле transaction_id с идентификатором транзакции — это первичный ключ таблицы, а два поля id и item_code — внешние ключи, связывающие данные с таблицами users и items.
 --7.Вывод первых строк таблицы users
 select *,
 count(*) over() as row_count 
@@ -80,4 +83,6 @@ FROM fantasy.events
 WHERE date IS NULL
   OR time IS NULL
   OR amount IS NULL
-  OR seller_id IS NULL;--Все 508186 пропусков содержатся только в поле seller_id, то есть в данных нет информации о продавце. Видимо, в таком случае покупка совершалась в игровом магазине, а не у других продавцов.
+  OR seller_id IS NULL;
+--Все 508186 пропусков содержатся только в поле seller_id, то есть в данных нет информации о продавце. 
+Видимо, в таком случае покупка совершалась в игровом магазине, а не у других продавцов.
